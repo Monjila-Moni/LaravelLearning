@@ -1,35 +1,20 @@
+<!-- php artisan make::controller controller_name diye controller create kra hoice-->
 <?php
 
 use Illuminate\Support\Facades\Route;
-function getUsers(){
-    return [
-        1=>['name'=>'moni', 'phone'=>'0188999900', 'city'=>'dhaka'],
-        2=>['name'=>'mon', 'phone'=>'0188999900', 'city'=>'khulna'],
-        3=>['name'=>'monjila', 'phone'=>'0188999900', 'city'=>'dhaka'],
-        4=>['name'=>'elora', 'phone'=>'0188999900', 'city'=>'rangpur'],
-    ];
-}
+use App\Http\Controllers\pageController;
+use App\Http\Controllers\TestingController;
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', [pageController::class, 'showHome'])->name('home');
+// Route::get('/user', [pageController::class, 'showBlog'])->name('blog');
+// Route::get('/user/{name}', [pageController::class, 'showUser'])->name('userName');
+
+Route::controller(pageController::class)->group(function() {
+    Route::get('/','showHome')->name('home');
+    Route::get('/user', 'showBlog')->name('blog');
+    Route::get('/user/{name}','showUser')->name('userName');
 });
 
-Route::get('/users', function () {
-    //first way as an array
-    // return view('users', ['name' => 'moni', 'city' => '<script> alert("Dhaka");</script>']);
-    //2nd way by with
-    // return view('users')->with('user', 'moni')->with('city','Dhaka');
-    //3rd way
-    //return view('users')->withUser('Moni')->withCity('');
-    $names = getUsers();
-    return view('users',['user'=>$names,'city'=>'Dhaka']);
+Route::get('/test',TestingController::class)->name('test');
 
-});
-
-Route::get('/user{id}', function ($id) {
-    $users = getUsers();
-    abort_if(!isset($users[$id]), 404);
-    $user = $users[$id];
-    return view('user',['id' => $user]);
-    //return "<h1>". $id. "</h1>";
-})->name('viewUser');
+?>

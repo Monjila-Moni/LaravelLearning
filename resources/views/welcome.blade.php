@@ -10,21 +10,7 @@
 <body>
 
 <h1>home page</h1>
-
-
-    {{-- @php
-        $users = ["moni","sheam","other"];
-    @endphp
-
-    <ul>
-    @foreach ($users as $user)
-        <li>{{ $user }}</li>
-    @endforeach
-    </ul>
-
-    @@if () --}}
-        
-    
+<a href="{{route('blog')}}">Blog</a>    
     
 </body>
 </html>
