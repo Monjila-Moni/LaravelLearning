@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\student;
+use App\Models\Student;
 
 class StudentSeeder extends Seeder
 {
@@ -13,13 +13,15 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i=0;$i<10; $i++)
-        {
-            student::create([
-                'name' => fake()->name(),//fakerphp.github.io website e ace aro onkgula
-                'email' => fake()->unique()->email()
-            ]);
-        }
+        Student::factory(5)->create();
+
+        // for($i=0;$i<10; $i++)
+        // {
+        //     student::create([
+        //         'name' => fake()->name(),//fakerphp.github.io website e ace aro onkgula
+        //         'email' => fake()->unique()->email()
+        //     ]);
+        // }
         
 
     //     $students = collect([

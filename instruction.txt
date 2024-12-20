@@ -1,0 +1,14 @@
+#factory create
+1.migration file create
+2. all required column are added to the migration table
+3.php artisan make:model student (migration table er nam without s)
+4.php artisan make:factory StudentFactory (without s and sese Factory word ta thakbe)
+5.factory file e giye return namok option e fake function calate hbe
+6.database seeder e giye 
+
+            student::factory()->count(10)->create() 
+
+    ai line ta likhte hbe(student holo model nam, 
+    count er vitore joto number dibo totgula data create hbe)
+7.php artisan migrate:fresh
+8.php artisan db:seed
